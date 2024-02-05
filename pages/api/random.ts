@@ -19,7 +19,8 @@ export default async function handler(
         take: 1,
         skip: randomIndex
     });
-    return res.status(200).json(randomMovies[0])
+    return res.status(200).json(randomMovies[0]);
+    
   } catch (error) {
     console.log(error);
     return res.status(400).end();
