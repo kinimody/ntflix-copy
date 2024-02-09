@@ -4,8 +4,11 @@ import { BsSearch, BsBell } from "react-icons/bs";
 import MobileMenu from "@/components/MobileMenu";
 import { useCallback, useEffect, useState } from "react";
 import AccountMenu from "./AccountMenu";
+import React from "react";
 
 const TOP_OFFSET = 66;
+
+
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -81,7 +84,7 @@ const Navbar = () => {
               }`}
             />
             <div onMouseLeave={toggleAccountMenu}>
-              <AccountMenu visible={showAccountMenu} />
+              <AccountMenu  visible={showAccountMenu} />
             </div>
           </div>
         </div>
