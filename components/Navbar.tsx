@@ -15,6 +15,8 @@ const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
 
+
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= TOP_OFFSET) {
@@ -84,7 +86,7 @@ const Navbar = () => {
               }`}
             />
             <div onMouseLeave={toggleAccountMenu}>
-              <AccountMenu  visible={showAccountMenu} />
+              <AccountMenu   visible={showAccountMenu} />
             </div>
           </div>
         </div>

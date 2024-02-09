@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
-  console.log("this is session",session);
+  
 
   if (!session) {
     return {
@@ -26,6 +26,7 @@ export async function getServerSideProps(context: NextPageContext) {
 const profiles = () => {
     const router = useRouter();
     const {data:user} = useCurrentUser();
+    console.log("profiles data",user)
     
 
   return (
