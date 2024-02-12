@@ -12,9 +12,7 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data , index}) => {
   
- const isFirst = index === 0;
- console.log(isFirst)
-
+ 
  const router = useRouter();
  const {openModal} =useInfoModal();
 
