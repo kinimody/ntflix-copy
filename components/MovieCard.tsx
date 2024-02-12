@@ -7,10 +7,10 @@ import  {BiChevronDown} from "react-icons/bi";
 
 interface MovieCardProps {
   data: Record<string, any>;
-  index: number
+  key: string
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ data , index}) => {
+const MovieCard: React.FC<MovieCardProps> = ({ data , key}) => {
   
  
  const router = useRouter();
