@@ -2,9 +2,6 @@ import axios from 'axios';
 import React, { useCallback, useMemo } from 'react';
 import { FiPlusCircle } from "react-icons/fi";
 import { FiCheckCircle } from "react-icons/fi";
-
-
-
 import useCurrentUser from '@/hooks/useCurrentUser';
 import useFavorites from '@/hooks/useFavorites';
 

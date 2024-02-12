@@ -1,14 +1,25 @@
 import React from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
+import { useRouter } from "next/router";
+import useInfoModal from "@/hooks/useInfoModal";
+import  {BiChevronDown} from "react-icons/bi";
 
 interface MovieCardProps {
   data: Record<string, any>;
+  index: number
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ data , index}) => {
+  
+ const isFirst = index === 0;
+ console.log(isFirst)
+
+ const router = useRouter();
+ const {openModal} =useInfoModal();
+
   return (
-    <div className="group bg-zinc-900 col-span relative h-[12vw]">
+    <div className="group bg-zinc-900 col-span relative h-[14vw]">
       <img
         src={data.thumbnailUrl}
         alt="thumbnail"
@@ -27,7 +38,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                 "
       ></img>
       <div
-        className="
+        className=" 
                 opacity-0
                 absolute
                 top-0
@@ -75,13 +86,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         >
           <div className="flex flex-row items-center gap-3">
             <div
-              onClick={() => {}}
+              onClick={() => router.push(`/watch/${data?.id}`)}
               className="cursor-pointer w-6 h-6 lg:w-10  lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300"
             >
-              <BsFillPlayFill size={30} />
+              <BsFillPlayFill size={30}  />
             </div>
               <FavoriteButton movieId={data.id}/>
-              
+              <div onClick={()=>{openModal(data?.id)}} className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300" >
+                <BiChevronDown size={30} className="text-white group/item:text-neutral-300"/>
+              </div>
+           
           </div>
           <p className="text-green-400 front-semibold mt-4">
             New <span className="text-white">2023</span>

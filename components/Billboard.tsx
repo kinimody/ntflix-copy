@@ -1,11 +1,17 @@
 import useBillboard from "@/hooks/useBillboard";
-import React from "react";
+import React, { useCallback } from "react";
 import { LiaInfoCircleSolid } from "react-icons/lia";
+import PlayButton from "./PlayButton";
+import useInfoModal from "@/hooks/useInfoModal";
 
 
 const Billboard = () => {
 
+    const {openModal} = useInfoModal();
     const {data} = useBillboard();
+    const handleOpenModal= useCallback(()=>{
+        openModal(data?.id);
+    },[openModal,data?.id])
 
 
     return(
@@ -28,8 +34,9 @@ const Billboard = () => {
                 </p>
 
             <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
-                <button className="bg-white text-white bg-opacity-30 rounded-md px-2 md:px-4 py-1 md:py-2 w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition">
-                    <LiaInfoCircleSolid className="mr-1"/>
+                <PlayButton movieId={data?.id}/>
+                <button onClick={handleOpenModal}  className="bg-white text-white bg-opacity-30 rounded-md px-2 md:px-4 py-1 md:py-2 w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition">
+                    <LiaInfoCircleSolid  className="mr-1"/>
                     More info 
                 </button>
             </div>
