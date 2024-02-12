@@ -10,7 +10,7 @@ interface AccountMenuProps {
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible}) => {
   const {data} = useCurrentUser();
-  console.log(data,"THIS WAS FROM ACCOUNT MENU")
+ 
 
   
   if (!visible) {
