@@ -28,7 +28,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data , key}) => {
                 duration 
                 shadow-xl
                 rounded-md
-                group-hover:opacity-90
+                group-hover:opacity-80
                 sm:group-hover:opacity-0
                 delay-300
                 w-full

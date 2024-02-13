@@ -8,14 +8,10 @@ import React from "react";
 
 const TOP_OFFSET = 66;
 
-
-
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
-
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,16 +29,26 @@ const Navbar = () => {
   }, []);
 
   const toggleMobileMenu = useCallback(() => {
+    if (showAccountMenu == true) {
+      setShowAccountMenu(false);
+    }
     setShowMobileMenu((current) => !current);
-  }, [setShowMobileMenu]);
+  }, [setShowMobileMenu, showAccountMenu]);
 
   const toggleAccountMenu = useCallback(() => {
+    if (showMobileMenu == true) {
+      setShowMobileMenu(false);
+    }
     setShowAccountMenu((current) => !current);
-  }, [setShowAccountMenu]);
+  }, [setShowAccountMenu, showMobileMenu]);
 
   return (
     <nav className="w-full fixed z-40">
-      <div className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${showBackground  ? "bg-zinc-900 bg-opacity-90" : ""}`}>
+      <div
+        className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${
+          showBackground ? "bg-zinc-900 bg-opacity-90" : ""
+        }`}
+      >
         <img src="/images/logo.png " alt="logo" className="h-4 lg:h-7" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavbarItem label="Home" />
@@ -73,10 +79,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-row items-center gap-2 cursor-pointer relative">
             \
-            <div
-              onMouseEnter={toggleAccountMenu}
-              className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden"
-            >
+            <div className="w-6 h-6 lg:w-8 lg:h-8 border border-black rounded-md overflow-hidden">
               <img src="/images/default-blue.png" alt="" />
             </div>
             <TiArrowSortedDown
@@ -85,8 +88,8 @@ const Navbar = () => {
                 showAccountMenu ? "rotate-180" : "rotate-0"
               }`}
             />
-            <div onMouseLeave={toggleAccountMenu}>
-              <AccountMenu   visible={showAccountMenu} />
+            <div>
+              <AccountMenu visible={showAccountMenu} />
             </div>
           </div>
         </div>

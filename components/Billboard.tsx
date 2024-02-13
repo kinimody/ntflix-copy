@@ -15,9 +15,9 @@ const Billboard = () => {
 
 
     return(
-        <div className="relative h-[56.25vw]">
+        <div className="relative h-[78.25vw] sm:h-[56.25vw]">
             <video 
-            className="w-full h-[56.25vw] object-cover brightness-[60%]"
+            className="w-full h-[78.25vw] sm:h-[56.25vw] object-cover brightness-[60%] mt-0"
             autoPlay
             muted
             loop
@@ -25,7 +25,7 @@ const Billboard = () => {
             src={data?.videoUrl}>
             
             </video>
-            <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16 ">
+            <div className="absolute top-[50%] md:top-[40%] ml-4 md:ml-16 ">
                 <p className="text-white text-1xl md:text-5xl h-full w-[50%] lg:text-6xl drop-shadow-xl">
                     {data?.title}
                 </p>
@@ -36,7 +36,7 @@ const Billboard = () => {
             <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
                 <PlayButton movieId={data?.id}/>
                 <button onClick={handleOpenModal}  className="bg-white text-white bg-opacity-30 rounded-md px-2 md:px-4 py-1 md:py-2 w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition">
-                    <LiaInfoCircleSolid  className="mr-1"/>
+                    <LiaInfoCircleSolid  className="mr-1" size={25}/>
                     More info 
                 </button>
             </div>
