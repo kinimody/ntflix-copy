@@ -9,6 +9,7 @@ const Billboard = () => {
 
     const {openModal} = useInfoModal();
     const {data} = useBillboard();
+    
     const handleOpenModal= useCallback(()=>{
         openModal(data?.id);
     },[openModal,data?.id])
