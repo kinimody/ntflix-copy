@@ -42,7 +42,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                 "
           ></img>
 
-          <div className="absolute bottom-3 left-0 sm:bottom-1 rounded-md bg-black bg-opacity-50 px-2 py-1 w-full">
+          <div className="absolute bottom-0 left-0 sm:-bottom-4 rounded-md bg-black bg-opacity-50 px-2 py-1 sm:py-1 w-full">
+
             <p className="text-white opacity-100 text-xs sm:text-lg text-left whitespace-nowrap">
               {data?.title}
             </p>
