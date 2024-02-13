@@ -27,15 +27,19 @@ const InfoModal: React.FC<InfoModalPorps> = ({ visible, onClose }) => {
     }, 300);
   }, [onClose]);
 
-  useEffect(() => {
-    const handleEscape = (e:KeyboardEvent) => {
-      if(e.key === "Escape"){
-        handleClose()
+  const handleEscape = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isVisible) {
+        handleClose();
       }
-    }
-    window.addEventListener('keydown', handleEscape)
-  return () => window.removeEventListener('keydown', handleEscape)
-},[handleClose])
+    },
+    [handleClose, isVisible]
+  );
+  
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [handleEscape]);
 
   if (!visible) {
     return null;
@@ -57,7 +61,6 @@ const InfoModal: React.FC<InfoModalPorps> = ({ visible, onClose }) => {
           <div className="relative h-96 sm:h-96">
             <video
               className="w-full brightness-[60%] object-cover h-full"
-              autoPlay
               muted
               loop
               poster={data?.thumbnailUrl}
@@ -69,8 +72,8 @@ const InfoModal: React.FC<InfoModalPorps> = ({ visible, onClose }) => {
             >            
                 <AiOutlineClose className="text-white" style={{ fontSize: '1rem', '@screen sm': { fontSize: '2rem' } }} />
             </div>
-            <div className="absolute left-10 bottom-[10%]">
-                <p className="text-white text-2xl md:text-4xl h-full lg:text-5xl font-bold mb-4 sm:mb-8">
+            <div className="absolute left-10 bottom-[5%]">
+                <p className="text-white text-2xl md:text-4xl h-full lg:text-5xl  mb-4 sm:mb-4">
                     {data?.title}
                 </p>
                 <div className="flex flex-row gap-4 items-center">
@@ -80,7 +83,7 @@ const InfoModal: React.FC<InfoModalPorps> = ({ visible, onClose }) => {
                 </div>
             </div>
           </div>
-            <div className=" px-4 sm:px-12  py-8 flex flex-wrap sm:flex-nowrap gap-4 sm:gap-12">
+            <div className=" px-4 sm:px-12 py-8  md:py-8 flex flex-wrap sm:flex-nowrap gap-4 sm:gap-12 ">
               <div className="flex flex-col">
                 <p className="text-green-400 font-semibold  text-sm sm:text-lg">
                     New
